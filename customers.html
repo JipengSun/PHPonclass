@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <script type="text/javascript">
+        function showCustomer(str) {
+            var xmlhttp;
+            if (str==""){
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            }
+            if (window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET","getcustomer.php?q="+str,true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+<form action="">
+    <select name="customers" onchange="showCustomer(this.value)">
+        <option value=""> Select a customer:</option>
+        <option value="Jipeng"> Jipeng Sun</option>
+        <option value="Zhiqiao">Zhiqiao Dong</option>
+        <option value="Wei">Wei Bao</option>
+    </select>
+</form>
+<br/>
+<div id="txtHint">Customer info will be listed here...</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONtry</title>
+</head>
+<body>
+<h2>
+    JSON Oject Creation in JavaScript
+</h2>
+<p>
+    CourseName: <span id="jcourse"></span><br/>
+    Lecturer:<span id="jlecturer"></span><br/>
+</p>
+<p>
+    #1 First Name: <span id="fn1"></span><br/>
+    #2 First Name: <span id="fn2"></span><br/>
+    #3 First Name: <span id="fn3"></span><br/>
+</p>
+</body>
+<script type="text/javascript">
+    var JSONObject = {
+        "course":"Web Information Systems",
+        "lecturer":"Helen"
+    };
+    var txt = '{"students":[{"firstname":"John","lastname":"Doe"},{"firstname":"Jipeng","lastname":"Sun"},' +
+        '{"firstname":"Lukas","lastname":"Sun"}]}';
+    var obj1 = JSON.parse(txt);
+    var obj = eval("("+txt+")");
+    document.getElementById("jcourse").innerHTML = JSONObject.course;
+    document.getElementById("jlecturer").innerHTML = JSONObject.lecturer;
+    document.getElementById("fn1").innerHTML = obj1.students[0].firstname;
+    document.getElementById("fn2").innerHTML = obj1.students[1].firstname;
+    document.getElementById("fn3").innerHTML = obj1.students[2].firstname;
+</script>
+</body>
+</html>
